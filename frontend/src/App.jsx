@@ -11,6 +11,7 @@ import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import Foodinfo from "./pages/Foodinfo";
 
+
 const App = () => {
   const isAuthenticated = !!localStorage.getItem("token");
 

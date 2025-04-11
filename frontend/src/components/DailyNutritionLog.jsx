@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const DailyNutritionLog = ({ logs = [] }) => {
   return (
-    <div className="h-screen bg-gradient-to-b from-blue-100 to-red-100 p-6 overflow-y-auto">
+    <div className="h-screen bg-gradient-to-b from-blue-100 to-red-100 p-6 overflow-y-auto  pt-20">
       <h2 className="text-2xl font-bold text-blue-900 mb-6">Daily Nutrition Log</h2>
       {logs.length > 0 ? (
         logs.map((log, index) => (

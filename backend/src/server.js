@@ -2,6 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
+const chatbotRoute = require("./routes/chatboot");
+
 
 const authRoutes = require("./routes/authRoutes");
 const foodLogRoutes = require("./api/track-food");
@@ -16,6 +18,7 @@ app.use(express.json());
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/track-food", foodLogRoutes);
+app.use("/api/chatbot", chatbotRoute);
 
 // MongoDB Connection
 mongoose
