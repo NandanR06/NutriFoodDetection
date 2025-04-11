@@ -9,6 +9,7 @@ import {
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
+import Foodinfo from "./pages/Foodinfo";
 
 const App = () => {
   const isAuthenticated = !!localStorage.getItem("token");
@@ -27,6 +28,8 @@ const App = () => {
             )
           }
         />
+
+        <Route path="/foodinfo" element={<Foodinfo/>}/>
         <Route
           path="/login"
           element={!isAuthenticated ? <Login /> : <Navigate to="/dashboard" />}
@@ -46,6 +49,7 @@ const App = () => {
           element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />}
         />
       </Routes>
+      
     </Router>
   );
 };

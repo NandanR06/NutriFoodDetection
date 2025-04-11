@@ -1,47 +1,41 @@
-import React, { useState, useEffect } from 'react';
-import CaptureImage from '../components/CaptureImage';
-import FoodAnalysisResult from '../components/FoodAnalysisResult';
-import DailyNutritionLog from '../components/DailyNutritionLog';
+// frontend/pages/Dashboard.js
+import React, { useEffect, useState } from 'react';
+import Navbar from '../componentFoodData/Navbar';
+import CaptureImage from '../componentFoodData/CaptureImage';
 import axios from 'axios';
+import DailyNutritionLog from '../components/DailyNutritionLog';
 
 const Dashboard = () => {
-  const [image, setImage] = useState(null);
-  const [foodItems, setFoodItems] = useState([]);
-  const [logs, setLogs] = useState([]);
-
-  const handleImageCapture = (imgData) => {
-    setImage(imgData);
-    // Simulate food analysis for now
-    setFoodItems([
-      { name: 'Apple', calories: 95, protein: 0.5, carbs: 25, fats: 0.3 }
-    ]);
-  };
-
-  const handleConfirm = async () => {
-    const token = localStorage.getItem('token');
-    await axios.post('http://localhost:5000/api/track-food', { items: foodItems }, {
-      headers: { Authorization: `Bearer ${token}` }
-    });
-    fetchLogs();
-  };
-
-  const fetchLogs = async () => {
-    // Dummy logs for now
-    setLogs([
-      { date: new Date().toLocaleDateString(), totalCalories: 95 }
-    ]);
-  };
+  const [data, setData] = useState([]);
+  const baseUrl = 'http://localhost:5000';
 
   useEffect(() => {
-    fetchLogs();
+    const fetchFoodInfo = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        const response = await axios.get(`${baseUrl}/api/track-food`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        const items = response.data[0]?.items || [];
+        setData(items);
+      } catch (error) {
+        console.error('Error fetching food info:', error);
+      }
+    };
+    fetchFoodInfo();
   }, []);
 
   return (
-    <div className="p-6 max-w-3xl mx-auto">
-      <h1 className="text-2xl font-bold mb-4">Nutrition Dashboard</h1>
-      <CaptureImage onImageCapture={handleImageCapture} />
-      {foodItems.length > 0 && <FoodAnalysisResult foodItems={foodItems} onConfirm={handleConfirm} />}
-      <DailyNutritionLog logs={logs} />
+    <div className="min-h-screen bg-gray-100 overflow-hidden">
+      <Navbar />
+      <div className="flex">
+        <aside className="w-1/4 p-4 h-screen bg-gradient-to-b from-blue-100 to-red-100 overflow-hidden">
+          <DailyNutritionLog logs={data} />
+        </aside>
+        <main className="w-3/4 pl-1 h-screen overflow-hidden">
+          <CaptureImage />
+        </main>
+      </div>
     </div>
   );
 };
