@@ -9,16 +9,16 @@ NutriAI is a MERN stack application that allows users to detect food items using
 ## 📷 Preview Screens
 
 ### 🔐 Login Page  
-![Login](https://i.imgur.com/your-login-image.png)
+![Login](./frontend/public/login.png)
 
 ### 📝 Register Page  
-![Register](https://i.imgur.com/your-register-image.png)
+![Register](./frontend/public/register.png)
 
 ### 📊 Dashboard (Logs + Camera Access)  
-![Dashboard](https://i.imgur.com/your-dashboard-image.png)
+![Dashboard](./frontend/public/dashboard.png)
 
 ### 🍔 Food Details Page  
-![Food Details](https://i.imgur.com/your-foodinfo-image.png)
+![Food Details](./frontend/public/food%20info.png)
 
 ---
 
@@ -56,44 +56,6 @@ NutriAI is a MERN stack application that allows users to detect food items using
 ---
 
 ## 📁 Project Structure
-
-NutriAI/
-├── Frontend/                       # React frontend
-│   ├── public/
-│   ├── src/
-│   │   ├── assets/              # Images, icons, and static assets
-│   │   ├── components/          # Reusable components (e.g., Camera, Navbar)
-│   │   │   └── Camera.jsx
-│   │   ├── pages/               # Main pages (e.g., Home, FoodInfo)
-│   │   │   └── FoodInfo.jsx
-│   │   ├── services/            # Axios instances, API helpers
-│   │   ├── store/               # Zustand or Redux store (e.g., foodstore.js)
-│   │   ├── App.jsx
-│   │   ├── main.jsx
-│   │   └── index.css
-│   ├── tailwind.config.js
-│   ├── package.json
-│   └── vite.config.js
-│
-├── Backend/                      # Node.js + Express backend
-│   ├── controllers/             # Logic for routes
-│   │   ├── foodController.js
-│   │   └── uploadController.js
-│   ├── models/                  # Mongoose models
-│   │   └── Food.js
-│   ├── routes/                  # Express routes
-│   │   ├── foodRoutes.js
-│   │   └── uploadRoutes.js
-│   ├── utils/                   # Utility functions (e.g., cloudinary.js)
-│   ├── config/                  # DB and API config
-│   │   └── db.js
-│   ├── middleware/              # Middleware (e.g., errorHandler)
-│   ├── .env
-│   ├── server.js
-│   └── package.json
-│
-├── .gitignore
-├── README.md
-└── package-lock.json
+![structure](./frontend/public/structure.png)
 
 
