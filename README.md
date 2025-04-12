@@ -8,11 +8,11 @@ NutriAI is a MERN stack application that allows users to detect food items using
 
 ## 📷 Preview Screens
 
-### 🔐 Login Page  
-![Login](./frontend/public/login.png)
-
 ### 📝 Register Page  
 ![Register](./frontend/public/register.png)
+
+### 🔐 Login Page  
+![Login](./frontend/public/login.png)
 
 ### 📊 Dashboard (Logs + Camera Access)  
 ![Dashboard](./frontend/public/dashboard.png)
