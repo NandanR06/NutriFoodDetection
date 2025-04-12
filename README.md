@@ -51,7 +51,7 @@ NutriAI is a MERN stack application that allows users to detect food items using
 - Cloudinary (for image storage)
 
 **ML Integration**:  
-- TensorFlow.js or Flask API for ML inference  
+- TensorFlow.js for ML inference  
 
 ---
 
