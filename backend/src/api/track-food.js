@@ -2,7 +2,7 @@ const express = require("express");
 const auth = require("../middleware/auth");
 const FoodLog = require("../model/foodLog");
 const router = express.Router();
-
+// add the food log model
 router.post("/", async (req, res) => {
   const {
     name,
@@ -44,7 +44,8 @@ router.post("/", async (req, res) => {
     res.status(500).send("❌ Failed to save log");
   }
 });
-
+// get all food logs
+// This route fetches all food logs from the database and returns them as a JSON response
 router.get("/", async (req, res) => {
   try {
     const logs = await FoodLog.find().sort({ date: -1 });

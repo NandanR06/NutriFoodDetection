@@ -1,3 +1,5 @@
+// generate a response from the OpenRouter API
+
 const Openrouter = async (prompt) => {
   console.log("🟡 Prompt sent to AI:", prompt);
   try {

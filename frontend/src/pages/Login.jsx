@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
-
+import { ToastContainer, toast } from "react-toastify";
+// login component
+// This component handles user login, including form submission and error handling. It uses axios to send login requests to the server and stores the authentication token in local storage.
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -11,37 +12,33 @@ const Login = () => {
 
   const baseURL = "http://localhost:5000";
 
-  useEffect(()=>{
-    
-  },[])
+  useEffect(() => {}, []);
 
-  const handleLogin = async (e) => {  
+  const handleLogin = async (e) => {
     e.preventDefault();
     console.log(username, password);
-    
+
     try {
       if (username === "" || password === "") {
         setError("Please fill in all fields");
       } else {
         console.log("Logging in with:", { username, password });
         setError("");
-        
+
         const res = await axios.post(`${baseURL}/api/auth/login`, {
           username,
           password,
         });
-        toast.success(' Login successful!')
+        toast.success(" Login successful!");
 
         localStorage.setItem("token", res.data.token);
 
         navigate("/dashboard");
 
         window.location.reload();
-        
       }
     } catch (err) {
-      // alert("Login failed");
-      toast.error(' Something went wrong.')
+      toast.error(" Something went wrong.");
     }
   };
 
@@ -84,9 +81,10 @@ const Login = () => {
         <div className="mt-4 text-center">
           signUp
           <span>
-            <a href="/register" className="text-blue-500 hover:underline ml-1">Register</a>
+            <a href="/register" className="text-blue-500 hover:underline ml-1">
+              Register
+            </a>
           </span>
-          
         </div>
       </div>
     </div>

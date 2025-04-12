@@ -6,6 +6,8 @@ dotenv.config();
 
 const router = express.Router();
 
+// ai service
+// This service uses OpenRouter API to generate nutritional information for food items based on user input.
 const openai = new OpenAI({
   baseURL: "https://openrouter.ai/api/v1",
   apiKey: process.env.OPEN_API_KEY,
@@ -18,6 +20,8 @@ router.post("/", async (req, res) => {
     return res.status(400).json({ error: "Prompt is required" });
   }
 
+  // stucture the prompt for the OpenRouter API
+  // This prompt is structured to request detailed nutritional information for a specific food item.
   const formattedPrompt = `
     Give nutritional information for the food item "${prompt}".
     Include the following:

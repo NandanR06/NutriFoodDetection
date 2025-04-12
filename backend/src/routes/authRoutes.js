@@ -4,17 +4,22 @@ const jwt = require("jsonwebtoken");
 const User = require("../model/user");
 const router = express.Router();
 
+// register route
+// This route handles user registration by hashing the password and saving the user to the database
 router.post("/register", async (req, res) => {
-  const { username, password ,email} = req.body;
+  const { username, password, email } = req.body;
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = new User({ username, password: hashedPassword,email });
+    const newUser = new User({ username, password: hashedPassword, email });
     await newUser.save();
     res.status(201).send("User registered");
   } catch (err) {
     res.status(500).send("Error registering user");
   }
 });
+
+// login route
+// This route handles user login by checking the credentials and returning a JWT token
 
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;

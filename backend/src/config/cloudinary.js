@@ -1,4 +1,5 @@
-// backend/config/cloudinary.js
+// This file configures the Cloudinary service for image uploads and management.
+// It initializes the Cloudinary library with the credentials stored in environment variables.
 const cloudinary = require("cloudinary").v2;
 
 cloudinary.config({

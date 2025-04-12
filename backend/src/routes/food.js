@@ -1,7 +1,8 @@
-// backend/routes/food.js
 const express = require("express");
 const router = express.Router();
 const upload = require("../middleware/upload");
+
+// UPLOAD THE IMAGE TO CLOUDINARY TO GET THE URL
 
 router.post("/upload", upload.single("image"), (req, res) => {
   try {
@@ -11,7 +12,7 @@ router.post("/upload", upload.single("image"), (req, res) => {
   }
 });
 
-
+// SAVE FOOD DATA TO DATABASE
 router.post("/foodData", async (req, res) => {
   try {
     const foodItem = req.body;
@@ -28,6 +29,5 @@ router.post("/foodData", async (req, res) => {
     res.status(500).json({ message: "Server error saving food data" });
   }
 });
-
 
 module.exports = router;

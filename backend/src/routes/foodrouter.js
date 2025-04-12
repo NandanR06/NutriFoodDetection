@@ -1,13 +1,12 @@
-// import dotenv from "dotenv";
-// import axios from "axios";
-// import express from "express";
-
 const express = require("express");
 const router = express.Router();
 const axios = require("axios");
 const dotenv = require("dotenv");
 
 dotenv.config();
+
+// detect-food route
+// This route handles food detection by sending a query to the CalorieNinja API
 router.get("/detect-food", async (req, res) => {
   try {
     const { query } = req.query;

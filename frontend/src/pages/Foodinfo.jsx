@@ -6,7 +6,7 @@ const Foodinfo = () => {
   const [capturedImage, setCapturedImage] = useState(null);
   const location = useLocation();
   const { log } = location.state || {};
-console.log("log", log);
+  console.log("log", log);
   const nutritionData = log?.info || {};
 
   useEffect(() => {
@@ -14,6 +14,7 @@ console.log("log", log);
     if (storedImage) setCapturedImage(storedImage);
   }, []);
 
+  // dummy data for testing
   const fields = [
     { label: "Calories", key: "calories" },
     { label: "Protein", key: "protein_g", unit: "g" },
@@ -48,75 +49,36 @@ console.log("log", log);
           </h2>
 
           <ul className="space-y-4">
-          <li
-            
-                className="bg-gradient-to-r from-pink-100 to-yellow-100 p-4 rounded-lg shadow-md flex justify-between text-lg font-medium"
-              >
-                <span className="text-gray-800">
-                Calories
-                </span>
-                <span className="text-purple-700">{log.calories}</span>
-                
-              </li>
-              <li
-            
-                className="bg-gradient-to-r from-pink-100 to-yellow-100 p-4 rounded-lg shadow-md flex justify-between text-lg font-medium"
-              >
-                <span className="text-gray-800">
-                Carbohydrates                </span>
-                <span className="text-purple-700">{log.carbohydrates_total_g}g</span>
-                
-              </li>
-              <li
-            
-                className="bg-gradient-to-r from-pink-100 to-yellow-100 p-4 rounded-lg shadow-md flex justify-between text-lg font-medium"
-              >
-                <span className="text-gray-800">
-                Protein
-                </span>
-                <span className="text-purple-700">{log.protein_g}g</span>
-                
-              </li>
-              <li
-            
-                className="bg-gradient-to-r from-pink-100 to-yellow-100 p-4 rounded-lg shadow-md flex justify-between text-lg font-medium"
-              >
-                <span className="text-gray-800">
-                Sugar
-                </span>
-                <span className="text-purple-700">{log.sugar_g}g</span>
-                
-              </li>
-              <li
-            
-                className="bg-gradient-to-r from-pink-100 to-yellow-100 p-4 rounded-lg shadow-md flex justify-between text-lg font-medium"
-              >
-                <span className="text-gray-800">
-                Cholesterol
-                </span>
-                <span className="text-purple-700">{log.cholesterol_mg}mg</span>
-                
-              </li>
-              <li
-            
-                className="bg-gradient-to-r from-pink-100 to-yellow-100 p-4 rounded-lg shadow-md flex justify-between text-lg font-medium"
-              >
-                <span className="text-gray-800">
-                Fiber
-                </span>
-                <span className="text-purple-700">{log.fiber_g}g</span>
-                
-              </li>
-              <li
-            
-                className="bg-gradient-to-r from-pink-100 to-yellow-100 p-4 rounded-lg shadow-md flex justify-between text-lg font-medium"
-              >
-                <span className="text-gray-800">
-                Sodium
-                </span>
-                <span className="text-purple-700">{log.sodium_mg}mg</span>
-                
-              </li>
+            <li className="bg-gradient-to-r from-pink-100 to-yellow-100 p-4 rounded-lg shadow-md flex justify-between text-lg font-medium">
+              <span className="text-gray-800">Calories</span>
+              <span className="text-purple-700">{log.calories}</span>
+            </li>
+            <li className="bg-gradient-to-r from-pink-100 to-yellow-100 p-4 rounded-lg shadow-md flex justify-between text-lg font-medium">
+              <span className="text-gray-800">Carbohydrates </span>
+              <span className="text-purple-700">
+                {log.carbohydrates_total_g}g
+              </span>
+            </li>
+            <li className="bg-gradient-to-r from-pink-100 to-yellow-100 p-4 rounded-lg shadow-md flex justify-between text-lg font-medium">
+              <span className="text-gray-800">Protein</span>
+              <span className="text-purple-700">{log.protein_g}g</span>
+            </li>
+            <li className="bg-gradient-to-r from-pink-100 to-yellow-100 p-4 rounded-lg shadow-md flex justify-between text-lg font-medium">
+              <span className="text-gray-800">Sugar</span>
+              <span className="text-purple-700">{log.sugar_g}g</span>
+            </li>
+            <li className="bg-gradient-to-r from-pink-100 to-yellow-100 p-4 rounded-lg shadow-md flex justify-between text-lg font-medium">
+              <span className="text-gray-800">Cholesterol</span>
+              <span className="text-purple-700">{log.cholesterol_mg}mg</span>
+            </li>
+            <li className="bg-gradient-to-r from-pink-100 to-yellow-100 p-4 rounded-lg shadow-md flex justify-between text-lg font-medium">
+              <span className="text-gray-800">Fiber</span>
+              <span className="text-purple-700">{log.fiber_g}g</span>
+            </li>
+            <li className="bg-gradient-to-r from-pink-100 to-yellow-100 p-4 rounded-lg shadow-md flex justify-between text-lg font-medium">
+              <span className="text-gray-800">Sodium</span>
+              <span className="text-purple-700">{log.sodium_mg}mg</span>
+            </li>
           </ul>
         </div>
       </motion.div>

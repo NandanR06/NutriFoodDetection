@@ -19,7 +19,6 @@ app.use(express.json());
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/track-food", foodLogRoutes);
-// app.use("/api/chatbot", chatbotRoute);
 app.use("/api/food", foodRoutes);
 app.use("/api/foods", foodRoutesData);
 

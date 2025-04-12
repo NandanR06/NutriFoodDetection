@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-
+// food data model
+// This model defines the structure of the food data in the database
 const foodDataSchema = new mongoose.Schema({
   name: { type: String },
   calories: { type: Number },

@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
-
+import { ToastContainer, toast } from "react-toastify";
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -44,7 +43,6 @@ const Register = () => {
         console.log("Registration successful");
         window.location.reload();
         toast.success("Registration successful!");
-
       }
     } catch (err) {
       // alert("Registration failed");
@@ -54,7 +52,7 @@ const Register = () => {
 
   return (
     <div className="flex items-center justify-center h-screen bg-gray-100">
-              <ToastContainer />
+      <ToastContainer />
 
       <div className="bg-white p-8 rounded-lg shadow-md w-96">
         <h2 className="text-2xl font-bold mb-6 text-center">Register</h2>
@@ -95,11 +93,11 @@ const Register = () => {
           </button>
         </form>
         <div className="mt-4 text-center">
-        
           <span>
-            <a href="/login" className="text-blue-500 hover:underline ml-1">Sign In</a>
+            <a href="/login" className="text-blue-500 hover:underline ml-1">
+              Sign In
+            </a>
           </span>
-          
         </div>
       </div>
     </div>

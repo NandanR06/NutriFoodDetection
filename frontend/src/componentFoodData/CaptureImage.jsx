@@ -6,6 +6,9 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 
+// camera component
+// This component uses TensorFlow.js to detect food items in real-time using the device's camera
+// and provides nutritional information about the detected food items. It also allows users to upload images of food items for further analysis.
 const Camera = () => {
   const videoRef = useRef(null);
   const [loading, setLoading] = useState(false);
@@ -30,10 +33,13 @@ const Camera = () => {
 
   // Preload model
   useEffect(() => {
-    cocoSsd.load().then(setModel).catch((err) => {
-      console.error("Model load error:", err);
-      toast.error("Failed to load model.");
-    });
+    cocoSsd
+      .load()
+      .then(setModel)
+      .catch((err) => {
+        console.error("Model load error:", err);
+        toast.error("Failed to load model.");
+      });
   }, []);
 
   // Clean up video stream
@@ -45,6 +51,7 @@ const Camera = () => {
     };
   }, []);
 
+  // Start camera when component mounts
   const startCamera = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ video: true });
@@ -55,6 +62,9 @@ const Camera = () => {
     }
   };
 
+  // capture image from video stream
+  // This function captures an image from the video stream and converts it to a data URL.
+  // It creates a canvas element, draws the current video frame onto the canvas, and then converts the canvas to a data URL.
   const captureImage = () => {
     const canvas = document.createElement("canvas");
     canvas.width = videoRef.current.videoWidth;
@@ -101,6 +111,8 @@ const Camera = () => {
     return null;
   };
 
+  // detect food in the video stream
+  // This function uses the loaded model to detect food items in the video stream.
   const detectFood = async () => {
     if (!model) {
       toast.error("Model not ready. Please wait.");
@@ -110,7 +122,9 @@ const Camera = () => {
     setLoading(true);
     try {
       const predictions = await model.detect(videoRef.current);
-      const foodItems = predictions.filter((p) => allowedFoods.includes(p.class));
+      const foodItems = predictions.filter((p) =>
+        allowedFoods.includes(p.class)
+      );
 
       if (foodItems.length > 0) {
         const detected = foodItems[0];
@@ -139,11 +153,17 @@ const Camera = () => {
     setLoading(false);
   };
 
+  //  log the food data
+  // This function logs the food data by sending a request to the server with the detected food item and its nutritional information.
+  // It uses the CalorieNinja API to fetch nutritional information and then saves it to the database.
   const logFoodData = async (food, imageUrl) => {
     try {
-      const { data } = await axios.get("http://localhost:5000/api/foods/detect-food", {
-        params: { query: food },
-      });
+      const { data } = await axios.get(
+        "http://localhost:5000/api/foods/detect-food",
+        {
+          params: { query: food },
+        }
+      );
 
       const item = data.items[0];
       const foodInfo = {

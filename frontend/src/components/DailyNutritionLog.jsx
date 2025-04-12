@@ -1,9 +1,11 @@
-// frontend/components/DailyNutritionLog.js
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+// daily nutrition log component
+// This component fetches and displays the user's daily nutrition logs from the server
+// and allows users to click on a log to view more details.
 const DailyNutritionLog = () => {
   const [logs, setLogs] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -28,10 +30,8 @@ const DailyNutritionLog = () => {
   }, []);
 
   const handleData = async (log) => {
-  
     return navigate("/foodinfo", { state: { log } });
-    
-  }
+  };
 
   return (
     <div className="h-screen bg-gradient-to-b from-blue-100 to-red-100 p-6 overflow-y-auto pt-20">
@@ -46,7 +46,9 @@ const DailyNutritionLog = () => {
         ? logs.map((log, index) => (
             <motion.div
               key={index}
-              onClick={() =>{handleData(log)}}
+              onClick={() => {
+                handleData(log);
+              }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
