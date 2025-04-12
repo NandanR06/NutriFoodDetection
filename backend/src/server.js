@@ -3,7 +3,8 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const chatbotRoute = require("./routes/chatboot");
-
+const foodRoutes = require("./routes/food");
+const foodRoutesData = require("./routes/foodrouter");
 
 const authRoutes = require("./routes/authRoutes");
 const foodLogRoutes = require("./api/track-food");
@@ -18,7 +19,9 @@ app.use(express.json());
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/track-food", foodLogRoutes);
-app.use("/api/chatbot", chatbotRoute);
+// app.use("/api/chatbot", chatbotRoute);
+app.use("/api/food", foodRoutes);
+app.use("/api/foods", foodRoutesData);
 
 // MongoDB Connection
 mongoose

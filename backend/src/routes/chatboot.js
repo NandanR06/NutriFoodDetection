@@ -14,11 +14,17 @@ const openai = new OpenAI({
 router.post("/", async (req, res) => {
   const { prompt } = req.body;
 
+  if (!prompt) {
+    return res.status(400).json({ error: "Prompt is required" });
+  }
+
   const formattedPrompt = `
     Give nutritional information for the food item "${prompt}".
     Include the following:
-    - Calories
-    - Protein
+    - name
+    - FoodCategory
+    - calories
+    - protein
     - Carbohydrates
     - Fats
     - Vitamin A
@@ -35,11 +41,24 @@ router.post("/", async (req, res) => {
       messages: [{ role: "user", content: formattedPrompt }],
     });
 
-    const message = completion.choices[0]?.message?.content;
+    // Check if response is valid
+    if (
+      !completion ||
+      !completion.choices ||
+      !completion.choices[0] ||
+      !completion.choices[0].message ||
+      !completion.choices[0].message.content
+    ) {
+      return res
+        .status(500)
+        .json({ error: "Invalid response from OpenRouter API" });
+    }
+
+    const message = completion.choices[0].message.content;
     res.status(200).json({ data: message });
   } catch (err) {
-    console.error("OpenAI error:", err.message);
-    res.status(500).json({ error: err.message });
+    console.error("❌ OpenAI error:", err);
+    res.status(500).json({ error: err.message || "Internal Server Error" });
   }
 });
 

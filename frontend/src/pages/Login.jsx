@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
@@ -10,6 +10,10 @@ const Login = () => {
   const navigate = useNavigate();
 
   const baseURL = "http://localhost:5000";
+
+  useEffect(()=>{
+    
+  },[])
 
   const handleLogin = async (e) => {  
     e.preventDefault();

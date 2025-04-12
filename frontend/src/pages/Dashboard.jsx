@@ -30,7 +30,7 @@ const Dashboard = () => {
       <Navbar />
       <div className="flex">
         <aside className="w-1/4 p-4 h-screen bg-gradient-to-b from-blue-100 to-red-100 overflow-hidden">
-          <DailyNutritionLog logs={data} />
+          <DailyNutritionLog  />
         </aside>
         <main className="w-3/4 pl-1 h-screen overflow-hidden pt-10">
           <CaptureImage />

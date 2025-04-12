@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -38,11 +40,11 @@ const Register = () => {
           password,
           email,
         });
-        toast.success(" Registration successful!");
-
-        console.log("Registration successful");
-
         navigate("/login");
+        console.log("Registration successful");
+        window.location.reload();
+        toast.success("Registration successful!");
+
       }
     } catch (err) {
       // alert("Registration failed");
@@ -52,6 +54,8 @@ const Register = () => {
 
   return (
     <div className="flex items-center justify-center h-screen bg-gray-100">
+              <ToastContainer />
+
       <div className="bg-white p-8 rounded-lg shadow-md w-96">
         <h2 className="text-2xl font-bold mb-6 text-center">Register</h2>
         {error && <p className="text-red-500 mb-4">{error}</p>}
